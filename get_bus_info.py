@@ -28,10 +28,17 @@ def getMTAdetailed(key, route, path):
     for bus in Active_buses:
         lat = bus['MonitoredVehicleJourney']['VehicleLocation']['Latitude']
         lon = bus['MonitoredVehicleJourney']['VehicleLocation']['Longitude']
-        stop = bus['MonitoredVehicleJourney'][
-            "OnwardCalls"]["OnwardCall"][0]['StopPointName']
-        stopStatus = bus['MonitoredVehicleJourney']["OnwardCalls"][
-            "OnwardCall"][0]['Extensions']['Distances']['PresentableDistance']
+        'N/A'
+        
+
+        if len(bus['MonitoredVehicleJourney']["OnwardCalls"])>0:
+	        stop = bus['MonitoredVehicleJourney'][
+	            "OnwardCalls"]["OnwardCall"][0]['StopPointName']
+	        stopStatus = bus['MonitoredVehicleJourney']["OnwardCalls"][
+	            "OnwardCall"][0]['Extensions']['Distances']['PresentableDistance']
+	    else:
+	    	stop, stopStatus = 'N/A', 'N/A'
+
 
         busInfo = {'Latitude': lat, "Longitude": lon,
                    'Stop Name': stop, 'Stop Status': stopStatus}
