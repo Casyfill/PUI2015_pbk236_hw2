@@ -32,12 +32,10 @@ def getMTAdetailed(key, route, path):
         
 
         if len(bus['MonitoredVehicleJourney']["OnwardCalls"])>0:
-	        stop = bus['MonitoredVehicleJourney'][
-	            "OnwardCalls"]["OnwardCall"][0]['StopPointName']
-	        stopStatus = bus['MonitoredVehicleJourney']["OnwardCalls"][
-	            "OnwardCall"][0]['Extensions']['Distances']['PresentableDistance']
-	    else:
-	    	stop, stopStatus = 'N/A', 'N/A'
+        	stop = bus['MonitoredVehicleJourney']["OnwardCalls"]["OnwardCall"][0]['StopPointName']
+        	stopStatus = bus['MonitoredVehicleJourney']["OnwardCalls"]["OnwardCall"][0]['Extensions']['Distances']['PresentableDistance']
+        else:
+        	stop, stopStatus = 'N/A', 'N/A'
 
 
         busInfo = {'Latitude': lat, "Longitude": lon,
